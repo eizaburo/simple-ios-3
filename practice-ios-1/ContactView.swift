@@ -88,19 +88,24 @@ struct ContactView: View {
                     
                     //message
                     Text("お問合せ内容")
-                    TextField("お問合せ内容", text: $message)
-                        .frame(height: 100)
-                        .padding(16)
-                        .background(Color.gray.opacity(0.2))
-                        .cornerRadius(8)
-                        .autocapitalization(.none)
-                        .onChange(of: message){
-                            if(isSubmitting){
-                                messageEdited = false
-                            }else{
-                                messageEdited = true
+                    ZStack {
+                        Color.gray.opacity(0.2)
+                        TextEditor(text: $message)
+                            .frame(height: 100)
+                            .padding(8)
+                            .background(Color.clear)
+                            .scrollContentBackground(.hidden)
+                            .cornerRadius(8)
+                            .autocapitalization(.none)
+                            .onChange(of: message){
+                                if(isSubmitting){
+                                    messageEdited = false
+                                }else{
+                                    messageEdited = true
+                                }
                             }
-                        }
+                    }
+                    .cornerRadius(8)
                     if !validateMessage {
                         Text("お問合せ内容を正しく入力して下さい。")
                             .foregroundColor(.red)
