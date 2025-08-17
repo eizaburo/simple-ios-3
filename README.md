@@ -9,3 +9,4 @@
 ## メモ
 
 - ViewModelを利用せず、Viewのみにロジック含め記述。
+- mailのバリデーションをString extensionでやるのを普通？に修正。
